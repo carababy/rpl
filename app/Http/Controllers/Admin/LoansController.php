@@ -8,7 +8,10 @@ use App\Product;
 use App\Duration;
 use App\Gender;
 use App\EmploymentStatus;
+use Keygen\Keygen;
+
 use Auth;
+
 use Illuminate\Http\Request;
 
 class LoansController extends Controller
@@ -48,8 +51,9 @@ class LoansController extends Controller
      */
     public function store(Request $request)
     {
-       // $lid = Keygen::numeric(5)->generate();
-        //Session::put('lid', $lid);
+        $lid = Keygen::numeric(5)->generate();
+
+        Session::put('lid', $lid);
         $data = request()->validate([
             'borrower' => 'required|not_in:0',
             'g_name' => 'required',
@@ -57,9 +61,12 @@ class LoansController extends Controller
             'duration' => 'required',
             'bvn' => 'required',
             'loan_amount' => 'required',
-            'image1' => 'required',
+            'image' => 'required',
+            'image1'  => 'required',
             'image2' => 'required',
         ]);
+        
+
     }
 
     /**

@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ 'admin.loans.store' }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.loans.store') }}" enctype="multipart/form-data">
             @csrf
             <hr />
             <div class="row" style="background-color:  #cccccc;">
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="lproduct">{{ trans('cruds.loan.fields.lproduct') }}</label>
-                <select class="form-control select2 {{ $errors->has('lproduct') ? 'is-invalid' : '' }}" name="lproduct" id="income_category_id">
+                <select class="form-control select2 {{ $errors->has('lproduct') ? 'is-invalid' : '' }}" name="lproduct" id="income_category_id" required>
                     @foreach($products as $id => $income_category)
                         <option value="{{ $id }}" {{ old('income_category_id') == $id ? 'selected' : '' }}>{{ $income_category }}</option>
                     @endforeach
@@ -33,14 +33,14 @@
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="loan_amount">{{ trans('cruds.loan.fields.loan_amount') }}</label>
-                <input class="form-control {{ $errors->has('loan_amount') ? 'is-invalid' : '' }}" type="text" name="loan_amount" id="loan_amount" value="{{ old('loan_amount', '') }}">
+                <input class="form-control {{ $errors->has('loan_amount') ? 'is-invalid' : '' }}" type="text" name="loan_amount" id="loan_amount" value="{{ old('loan_amount', '') }}" required>
                 @if($errors->has('loan_amount'))
                     <span class="text-danger">{{ $errors->first('loan_amount') }}</span>
                 @endif
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="duration">{{ trans('cruds.loan.fields.duration') }}</label>
-                <select class="form-control select2 {{ $errors->has('duration') ? 'is-invalid' : '' }}" name="duration" id="duration">
+                <select class="form-control select2 {{ $errors->has('duration') ? 'is-invalid' : '' }}" name="duration" id="duration" required>
                     @foreach($durations as $id => $income_category)
                         <option value="{{ $id }}" {{ old('income_category_id') == $id ? 'selected' : '' }}>{{ $income_category }}</option>
                     @endforeach
@@ -51,42 +51,42 @@
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="income">{{ trans('cruds.loan.fields.income') }}</label>
-                <input class="form-control {{ $errors->has('income') ? 'is-invalid' : '' }}" type="text" name="income" id="income" value="{{ old('income', '') }}">
+                <input class="form-control {{ $errors->has('income') ? 'is-invalid' : '' }}" type="text" name="income" id="income" value="{{ old('income', '') }}" required>
                 @if($errors->has('income'))
                     <span class="text-danger">{{ $errors->first('income') }}</span>
                 @endif
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="salary_acc_no">{{ trans('cruds.loan.fields.salary_acc_no') }}</label>
-                <input class="form-control {{ $errors->has('salary_acc_no') ? 'is-invalid' : '' }}" type="text" name="salary_acc_no" id="salary_acc_no" value="{{ old('salary_acc_no', '') }}">
+                <input class="form-control {{ $errors->has('salary_acc_no') ? 'is-invalid' : '' }}" type="text" name="salary_acc_no" id="salary_acc_no" value="{{ old('salary_acc_no', '') }}" required>
                 @if($errors->has('salary_acc_no'))
                     <span class="text-danger">{{ $errors->first('salary_acc_no') }}</span>
                 @endif
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="bvn">{{ trans('cruds.loan.fields.bvn') }}</label>
-                <input class="form-control {{ $errors->has('bvn') ? 'is-invalid' : '' }}" type="text" name="bvn" id="bvn" value="{{ old('bvn', '') }}">
+                <input class="form-control {{ $errors->has('bvn') ? 'is-invalid' : '' }}" type="text" name="bvn" id="bvn" value="{{ old('bvn', '') }}" required>
                 @if($errors->has('bvn'))
                     <span class="text-danger">{{ $errors->first('bvn') }}</span>
                 @endif
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="pay_date">{{ trans('cruds.loan.fields.pay_date') }}</label>
-                <input class="form-control {{ $errors->has('pay_date') ? 'is-invalid' : '' }}" type="date" name="pay_date" id="pay_date" value="{{ old('pay_date', '') }}">
+                <input class="form-control {{ $errors->has('pay_date') ? 'is-invalid' : '' }}" type="date" name="pay_date" id="pay_date" value="{{ old('pay_date', '') }}" required>
                 @if($errors->has('pay_date'))
                     <span class="text-danger">{{ $errors->first('pay_date') }}</span>
                 @endif
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="repayment_source">{{ trans('cruds.loan.fields.repayment_source') }}</label>
-                <input class="form-control {{ $errors->has('repayment_source') ? 'is-invalid' : '' }}" type="text" name="repayment_source" id="repayment_source" value="{{ old('repayment_source', '') }}">
+                <input class="form-control {{ $errors->has('repayment_source') ? 'is-invalid' : '' }}" type="text" name="repayment_source" id="repayment_source" value="{{ old('repayment_source', '') }}" required>
                 @if($errors->has('repayment_source'))
                     <span class="text-danger">{{ $errors->first('repayment_source') }}</span>
                 @endif
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="employment_status">{{ trans('cruds.loan.fields.employment_status') }}</label>
-                <select class="form-control select2 {{ $errors->has('employment_status') ? 'is-invalid' : '' }}" name="employment_status" id="employment_status">
+                <select class="form-control select2 {{ $errors->has('employment_status') ? 'is-invalid' : '' }}" name="employment_status" id="employment_status" required>
                     @foreach($empstatus as $id => $income_category)
                         <option value="{{ $id }}" {{ old('income_category_id') == $id ? 'selected' : '' }}>{{ $income_category }}</option>
                     @endforeach
@@ -109,16 +109,21 @@
                     <span class="text-danger">{{ $errors->first('employer_address') }}</span>
                 @endif
             </div>
-            
-                <div class="form-group col-md-6 col-xs-12">
-                    <label  for="image">Upload Your Valid ID Card</label>
+            <div class="form-group col-md-6 col-xs-12">
+                    <label  for="image">Upload Your Passport Photo</label>
                     <div class="col-md-12">
                         <input id="image" name="image" type="file"  class="form-control" multiple>
                     </div>
                 </div>
+                <div class="form-group col-md-6 col-xs-12">
+                    <label  for="image1">Upload Your Valid ID Card</label>
+                    <div class="col-md-12">
+                        <input id="image1" name="image1" type="file"  class="form-control" multiple>
+                    </div>
+                </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="existing_loan">Do you have an Existing Loan</label>
-                <input class="form-control {{ $errors->has('existing_loan') ? 'is-invalid' : '' }}" type="text" name="existing_loan" id="existing_loan" value="{{ old('existing_loan', '') }}">
+                <input class="form-control {{ $errors->has('existing_loan') ? 'is-invalid' : '' }}" type="text" name="existing_loan" id="existing_loan" value="{{ old('existing_loan', '') }}" required>
                 @if($errors->has('existing_loan'))
                     <span class="text-danger">{{ $errors->first('existing_loan') }}</span>
                 @endif
@@ -139,7 +144,7 @@
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="tenure_end_date">{{ trans('cruds.loan.fields.tenure_end_date') }}</label>
-                <input class="form-control {{ $errors->has('tenure_end_date') ? 'is-invalid' : '' }}" type="date" name="tenure_end_date" id="tenure_end_date" value="{{ old('tenure_end_date', '') }}">
+                <input class="form-control {{ $errors->has('tenure_end_date') ? 'is-invalid' : '' }}" type="date" name="tenure_end_date" id="tenure_end_date" value="{{ old('tenure_end_date', '') }}" required>
                 @if($errors->has('tenure_end_date'))
                     <span class="text-danger">{{ $errors->first('tenure_end_date') }}</span>
                 @endif
@@ -148,7 +153,7 @@
            <h3> Guarantor's Details </h3>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="g_name">{{ trans('cruds.loan.fields.g_name') }}</label>
-                <input class="form-control {{ $errors->has('bvn') ? 'is-invalid' : '' }}" type="text" name="g_name" id="g_name" value="{{ old('g_name', '') }}">
+                <input class="form-control {{ $errors->has('bvn') ? 'is-invalid' : '' }}" type="text" name="g_name" id="g_name" value="{{ old('g_name', '') }}" required>
                 @if($errors->has('g_name'))
                     <span class="text-danger">{{ $errors->first('g_name') }}</span>
                 @endif
@@ -166,21 +171,21 @@
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="g_rel">Relationship with Guarantor</label>
-                <input class="form-control {{ $errors->has('g_rel') ? 'is-invalid' : '' }}" type="text" name="g_rel" id="g_rel" value="{{ old('g_rel', '') }}">
+                <input class="form-control {{ $errors->has('g_rel') ? 'is-invalid' : '' }}" type="text" name="g_rel" id="g_rel" value="{{ old('g_rel', '') }}" required>
                 @if($errors->has('g_rel'))
                     <span class="text-danger">{{ $errors->first('g_rel') }}</span>
                 @endif
             </div> 
             <div class="form-group col-md-6 col-xs-12">
                 <label for="g_phone">{{ trans('cruds.loan.fields.g_phone') }}</label>
-                <input class="form-control {{ $errors->has('g_phone') ? 'is-invalid' : '' }}" type="text" name="g_phone" id="g_phone" value="{{ old('g_phone', '') }}">
+                <input class="form-control {{ $errors->has('g_phone') ? 'is-invalid' : '' }}" type="text" name="g_phone" id="g_phone" value="{{ old('g_phone', '') }}" required>
                 @if($errors->has('g_phone'))
                     <span class="text-danger">{{ $errors->first('g_phone') }}</span>
                 @endif
             </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="g_address">{{ trans('cruds.loan.fields.g_address') }}</label>
-                <input class="form-control {{ $errors->has('g_address') ? 'is-invalid' : '' }}" type="text" name="g_address" id="g_address" value="{{ old('g_address', '') }}">
+                <input class="form-control {{ $errors->has('g_address') ? 'is-invalid' : '' }}" type="text" name="g_address" id="g_address" value="{{ old('g_address', '') }}" required>
                 @if($errors->has('g_address'))
                     <span class="text-danger">{{ $errors->first('g_address') }}</span>
                 @endif
@@ -192,14 +197,6 @@
                         <input id="image2" name="image2" type="file"  class="form-control" multiple>
                     </div>
                 </div>
-           
-            <div class="form-group col-md-6 col-xs-12">
-                <label for="bvn">{{ trans('cruds.loan.fields.bvn') }}</label>
-                <input class="form-control {{ $errors->has('bvn') ? 'is-invalid' : '' }}" type="text" name="bvn" id="bvn" value="{{ old('bvn', '') }}">
-                @if($errors->has('bvn'))
-                    <span class="text-danger">{{ $errors->first('bvn') }}</span>
-                @endif
-            </div>
           
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
