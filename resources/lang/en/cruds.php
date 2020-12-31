@@ -336,6 +336,7 @@ return [
             'g_phone'     => 'Guarantor\'s Phone',
             'g_rel'   => 'Relationship with Guarantor',
             'g_address'    => 'Guarantor\'s Address',
+            'g_gender'   => 'Gender',
             'g_identification' => 'Guarantor\'s ID',
             'emi' => 'EMI',
             'repay_1'  => 'Ist Month',

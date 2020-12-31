@@ -7,8 +7,12 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="#" enctype="multipart/form-data">
+        <form method="POST" action="{{ 'admin.loans.store' }}" enctype="multipart/form-data">
             @csrf
+            <hr />
+            <div class="row" style="background-color:  #cccccc;">
+            <h3> Loans Details </h3>
+            </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="borrower">{{ trans('cruds.loan.fields.borrower') }}</label>
                 <input class="form-control {{ $errors->has('borrower') ? 'is-invalid' : '' }}" type="text" name="borrower" id="borrower" value="{{ $user }}" readonly>
@@ -105,14 +109,13 @@
                     <span class="text-danger">{{ $errors->first('employer_address') }}</span>
                 @endif
             </div>
-            <div class="row">
+            
                 <div class="form-group col-md-6 col-xs-12">
                     <label  for="image">Upload Your Valid ID Card</label>
                     <div class="col-md-12">
                         <input id="image" name="image" type="file"  class="form-control" multiple>
                     </div>
                 </div>
-            </div>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="existing_loan">Do you have an Existing Loan</label>
                 <input class="form-control {{ $errors->has('existing_loan') ? 'is-invalid' : '' }}" type="text" name="existing_loan" id="existing_loan" value="{{ old('existing_loan', '') }}">
@@ -141,6 +144,8 @@
                     <span class="text-danger">{{ $errors->first('tenure_end_date') }}</span>
                 @endif
             </div>
+            <hr />
+           <h3> Guarantor's Details </h3>
             <div class="form-group col-md-6 col-xs-12">
                 <label for="g_name">{{ trans('cruds.loan.fields.g_name') }}</label>
                 <input class="form-control {{ $errors->has('bvn') ? 'is-invalid' : '' }}" type="text" name="g_name" id="g_name" value="{{ old('g_name', '') }}">
@@ -148,8 +153,8 @@
                     <span class="text-danger">{{ $errors->first('g_name') }}</span>
                 @endif
             </div>
-            <div class="form-group">
-                <label class="required" for="gender_id">{{ trans('cruds.loan.fields.g_gender') }}</label>
+            <div class="form-group col-md-6 col-xs-12">
+                <label class="required" for="gender_id">Guarantor's Gender</label>
                 <select class="form-control select2 {{ $errors->has('g_gender') ? 'is-invalid' : '' }}" name="g_gender" id="g_gender" required>
                     @foreach($genders as $id => $gender)
                         <option value="{{ $id }}" {{ old('gender_id') == $id ? 'selected' : '' }}>{{ $gender }}</option>
@@ -180,6 +185,14 @@
                     <span class="text-danger">{{ $errors->first('g_address') }}</span>
                 @endif
             </div>
+            
+                <div class="form-group col-md-6 col-xs-12">
+                    <label  for="image2">Upload Guarantor's Valid ID Card</label>
+                    <div class="col-md-12">
+                        <input id="image2" name="image2" type="file"  class="form-control" multiple>
+                    </div>
+                </div>
+           
             <div class="form-group col-md-6 col-xs-12">
                 <label for="bvn">{{ trans('cruds.loan.fields.bvn') }}</label>
                 <input class="form-control {{ $errors->has('bvn') ? 'is-invalid' : '' }}" type="text" name="bvn" id="bvn" value="{{ old('bvn', '') }}">
@@ -187,6 +200,7 @@
                     <span class="text-danger">{{ $errors->first('bvn') }}</span>
                 @endif
             </div>
+          
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
